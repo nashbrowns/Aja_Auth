@@ -10,6 +10,14 @@
     <input class="btn btn-info" type="submit" value="Add Pi" />
 </form>
 
+{{#if light}}
+<btn class="btn btn-info" id="lightOff">Turn Off</btn>
+{{/if}}
+
+{{#unless light}}
+<btn class="btn btn-info" id="lightOn">Turn On</btn>
+{{/unless}}
+
 <h1>{{light}}</h1>
 <h1>{{temp}}</h1>
 <h1>{{mac}}</h1>
@@ -17,5 +25,19 @@
 
 
 <script>
+$("#lightOn").on('click', function(){
 
+    $.ajax({
+        method: "PUT",
+        url: "/api/data/light/1"
+    }).then(location.reload());
+});
+
+$("#lightOff").on('click', function(){
+
+    $.ajax({
+        method: "PUT",
+        url: "/api/data/light/0"
+    }).then(location.reload());
+});
 </script>
