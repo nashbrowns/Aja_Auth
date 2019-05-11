@@ -39,12 +39,17 @@ module.exports = function(app, passport) {
         }
       }).then(function(dbrpi) {
 
+        if(dbrpi[0] === undefined){
+          res.render('dashboard', {username: user_data.user.email});
+        }
+        else{
         console.log(dbrpi[0].temp);
          let lightData = dbrpi[0].light;
          let tempData = dbrpi[0].temp;
          let macData = dbrpi[0].mac_address;
         res.render('dashboard', {username: user_data.user.email, light: lightData, temp:tempData, mac:macData });
-      })
+        }
+      });
 
     //res.render('dashboard', {username: req.user.email, user_data: req});
     
