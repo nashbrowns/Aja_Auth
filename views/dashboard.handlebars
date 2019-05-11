@@ -13,17 +13,6 @@
 
         </div>
 
-{{#if light}}
-<btn class="btn btn-info" id="lightOff">Turn Off</btn>
-{{/if}}
-
-{{#unless light}}
-<btn class="btn btn-info" id="lightOn">Turn On</btn>
-{{/unless}}
-
-<h1>{{light}}</h1>
-<h1>{{temp}}</h1>
-<h1>{{mac}}</h1>
 
     <div class="row m-4">
         
@@ -57,7 +46,13 @@
 
                <h2><i class="far fa-lightbulb"></i> The light is on: {{light}}</h2>
                <div class="col-sm">
-                       <button class="btn button" id="light-btn">Light Switch</button>
+                      {{#if light}}
+                      <btn class="btn btn-info" id="lightOff">Turn Off</btn>
+                      {{/if}}
+                      
+                      {{#unless light}}
+                      <btn class="btn btn-info" id="lightOn">Turn On</btn>
+                      {{/unless}}
                    </div>
 
                <br>
