@@ -1,0 +1,374 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css?family=KoHo:200,300,400,500,600,700|Montserrat:100,300,400,900");
+
+body {
+  background-image: url(../assets/bgimage-01.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  font-family: Montserrat;
+  font-weight: 300;
+  font-size: 0.9em;
+  letter-spacing: 0.01em;
+}
+
+.container {
+  padding-bottom: 20px;
+}
+
+.aja {
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 500;
+  font-size: 3em;
+  letter-spacing: 0.03em;
+  padding-top: 10px;
+  color: #2da6a0;
+  text-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+}
+
+.space {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.date {
+  font-family: Montserrat;
+  font-weight: 300;
+  font-size: 0.8em;
+  letter-spacing: 0.01em;
+}
+
+h5 {
+  color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 500;
+  font-size: 1em;
+  letter-spacing: 0.03em;
+  text-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  padding-bottom: 25px;
+}
+
+label {
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 500;
+  font-size: 1em;
+  color: #2da6a0;
+  letter-spacing: 0.03em;
+  text-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+}
+
+.form-group {
+  padding-bottom: 15px;
+}
+
+.logo {
+  max-width: 45%;
+}
+
+.button {
+  color: #2da6a0;
+  box-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  background-color: #fff;
+  border-color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 600;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+}
+
+.button:focus {
+  color: #2da6a0;
+  box-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  background-color: #fff;
+  border-color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 600;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+}
+
+.entry {
+  color: #2da6a0;
+  box-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  background-color: #fff;
+  border-color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 600;
+  font-size: 0.8em;
+  letter-spacing: 0.02em;
+}
+
+.entry:hover {
+  border-color: #2da6a0;
+  box-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  background-color: #2da6a0;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 600;
+  font-size: 0.8em;
+  letter-spacing: 0.02em;
+}
+
+.card-header {
+  color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 600;
+  font-size: 1.2em;
+  letter-spacing: 0.02em;
+}
+
+.button:hover {
+  border-color: #2da6a0;
+  box-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  background-color: #2da6a0;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 600;
+  font-size: 1em;
+  letter-spacing: 0.02em;
+}
+
+.button a {
+  color: #2da6a0;
+}
+
+.button a:hover {
+  color: #fff;
+}
+
+
+
+.bgwhite {
+  background-color: #fff;
+  box-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+}
+
+.nav {
+  border-color: #2da6a0;
+  box-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 600;
+  font-size: 0.8em;
+  letter-spacing: 0.04em;
+  padding: 4px;
+  margin-left: 5px;
+  text-align: center;
+}
+
+.nav a {
+  color: #2da6a0;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+.nav:hover {
+  background-color: #2da6a0;
+  border: 0px;
+}
+
+.abs-center-x {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo {
+  height: 60px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  width: auto;
+}
+
+/* timeline
+
+
+LICENSE: MIT */
+
+.vtimeline {
+  position: relative;
+  padding: 30px;
+  overflow: hidden;
+}
+
+.vtimeline:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  background: #000;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.vtimeline-point {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.vtimeline-icon {
+  position: absolute;
+  top: 10px;
+  height: 25px;
+  width: 25px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #000;
+}
+
+.vtimeline-block {
+  width: 45%;
+  margin: 0;
+  transition: 0.5s ease all;
+}
+
+.vtimeline-block:after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: 45%;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #eee;
+  border-right: none;
+}
+
+.vtimeline-right {
+  margin-left: 55%;
+}
+
+.vtimeline-right.vt-animate-slide .vtimeline-content {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.vtimeline-right .vtimeline-date {
+  left: auto;
+  right: 55%;
+}
+
+.vtimeline-right:after {
+  left: auto;
+  right: 45%;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: none;
+  border-right: 10px solid #eee;
+}
+
+.vtimeline-date {
+  position: absolute;
+  left: 55%;
+  top: 15px;
+}
+
+.vtimeline-content {
+  background: #eee;
+  transition: 0.5s ease all;
+}
+
+.vt-animate-fade {
+  opacity: 0;
+}
+
+.vt-animate-slide {
+  opacity: 0;
+}
+
+.vt-animate-slide .vtimeline-content {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.vt-noarrows:after {
+  content: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .vtimeline:before {
+    left: 30px;
+    right: auto;
+    margin: 0;
+  }
+
+  .vtimeline-icon {
+    left: -10px;
+    right: auto;
+    margin: 0;
+  }
+
+  .vtimeline-block {
+    width: 85%;
+    margin-left: 15%;
+  }
+
+  .vtimeline-block:after {
+    left: auto;
+    right: 85%;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: none;
+    border-right: 10px solid #eee;
+  }
+
+  .vtimeline-date {
+    position: relative;
+    display: block;
+    top: 0;
+    left: 0;
+    right: auto;
+    background: #eee;
+  }
+
+  .vtimeline-right .vtimeline-date {
+    right: auto;
+  }
+
+  .vtimeline.basic .vtimeline-date {
+    padding: 10px 10px 0 10px;
+  }
+
+  .vt-animate-slide .vtimeline-content {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+
+#details {
+  height: 200px;
+}
+
+.add {
+  border-color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  color: #2da6a0;
+  font-weight: 600;
+  font-size: 1em;
+  letter-spacing: 0.04em;
+  padding: 4px;
+  margin-left: 5px;
+  text-align: center;
+}
