@@ -48,7 +48,51 @@ h5 {
   font-size: 1em;
   letter-spacing: 0.03em;
   text-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
-  padding-bottom: 25px;
+  padding-bottom: 10px;
+}
+
+h4 {
+  color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 500;
+  font-size: 1.2em;
+  letter-spacing: 0.03em;
+  text-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 500;
+  font-size: 1.5em;
+  letter-spacing: 0.03em;
+  text-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  padding-bottom: 10px;
+}
+
+h2 {
+  color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 500;
+  font-size: 1.7em;
+  letter-spacing: 0.03em;
+  text-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  padding-bottom: 10px;
+}
+
+h1 {
+  color: #2da6a0;
+  text-transform: uppercase;
+  font-family: Koho;
+  font-weight: 500;
+  font-size: 2em;
+  letter-spacing: 0.03em;
+  text-shadow: 4px 4px 10px rgba(11, 107, 99, 0.5);
+  padding-bottom: 10px;
 }
 
 label {
@@ -66,7 +110,7 @@ label {
 }
 
 .logo {
-  max-width: 45%;
+  max-width: 70%;
 }
 
 .button {

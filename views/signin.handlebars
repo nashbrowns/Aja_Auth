@@ -1,7 +1,54 @@
-    <form id="signin" name="signin" method="post" action="signin">
-        <label for="email">Email Address</label>
-        <input class="text" name="email" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <input class="btn" type="submit" value="Sign In" />
-    </form>
+<div class="container">
+
+    <div class="row mt-5">
+        <div class="col-xs-12 text-center mx-auto">
+
+            <h1 class="aja">WELCOME TO AJA</h1>
+            <img class="logo img-fluid" src="/assets/images/aja-logo@2x.png" alt="Aja App logo image">
+            <h5>Enter your credentials to sign in</h5>
+
+        </div>
+    </div>
+    
+    <div class="row">
+
+        <div class="col-sm text-center">
+
+            <form id="signin" class="space text-center" name="signin" method="post" action="signin">
+        
+                <div class="form-group">
+                    <input class="text" name="email" type="text" placeholder="Your Email Address"/>
+                </div>
+
+                <div class="form-group">
+                    <input name="password" type="password" placeholder="Your Password"/>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn button" type="submit" value="Sign In" />
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <br><br><br><br>
+
+    <div class="row">
+
+        <div class="col-sm text-center">
+            
+            <h5><i class="fas fa-seedling"></i></h5>
+
+
+            <h5>Don't have an Aja account?</h5>
+
+            <button class="btn button" href="./signup">Sign Up</button>
+
+        </div>
+
+    </div>
+
+</div>

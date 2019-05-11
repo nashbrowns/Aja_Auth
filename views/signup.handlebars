@@ -1,42 +1,46 @@
 <div class="container">
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-xs-12 text-center mx-auto">
 
             <h1 class="aja">WELCOME TO AJA</h1>
             <img class="logo img-fluid" src="/assets/images/aja-logo@2x.png" alt="Aja App logo image">
-            <h5>Sign up to track your gardens growth!</h5>
+            <h5>Create an account to start growing <i class="fas fa-seedling"></i></h5>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-sm-12 mx-auto">
 
-            <form class="space" id="signup" name="signup" method="post" action="/signup">
+            <form class="space text-center" id="signup" name="signup" method="post" action="/signup">
 
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input class="text" name="email" type="email" />
+                    <input class="text" name="email" type="email" placeholder="Email Address" />
                 </div>
 
                 <div class="form-group">
-                    <label for="firstname">Firstname</label>
-                    <input name="firstname" type="text" />
+                    <input name="firstname" type="text" placeholder="First Name"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="lastname">Lastname</label>
-                    <input name="lastname" type="text" />
+                    <input name="lastname" type="text" placeholder="Last Name"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input name="password" type="password" />
+                    <input name="password" type="password" placeholder="Password"/>
                 </div>
 
-                <input class="btn btn-block button" type="submit" value="Sign Up" />
+                <input class="btn button" type="submit" value="Let's Grow!" />
 
             </form>
 
+        </div>
+    </div>
+    <br><br><br>
+    <div class="row">
+
+        <div class="col-sm text-center">
+            <h5>Already have an Aja account?</h5>
+            <button class="btn button" href="/signin">Sign In</button>
         </div>
     </div>
 </div>
