@@ -1,12 +1,42 @@
+<div class="container">
 
-    <form id="signup" name="signup" method="post" action="/signup">
-        <label for="email">Email Address</label>
-        <input class="text" name="email" type="email" />
-        <label for="firstname">Firstname</label>
-        <input name="firstname" type="text" />
-        <label for="lastname">Lastname</label>
-        <input name="lastname" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <input class="btn" type="submit" value="Sign Up" />
-    </form>
+    <div class="row">
+        <div class="col-xs-12 text-center mx-auto">
+
+            <h1 class="aja">WELCOME TO AJA</h1>
+            <img class="logo img-fluid" src="/assets/images/aja-logo@2x.png" alt="Aja App logo image">
+            <h5>Sign up to track your gardens growth!</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 mx-auto">
+
+            <form class="space" id="signup" name="signup" method="post" action="/signup">
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input class="text" name="email" type="email" />
+                </div>
+
+                <div class="form-group">
+                    <label for="firstname">Firstname</label>
+                    <input name="firstname" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname">Lastname</label>
+                    <input name="lastname" type="text" />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input name="password" type="password" />
+                </div>
+
+                <input class="btn btn-block button" type="submit" value="Sign Up" />
+
+            </form>
+
+        </div>
+    </div>
+</div>
