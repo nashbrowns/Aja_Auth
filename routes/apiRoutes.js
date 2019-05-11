@@ -48,7 +48,7 @@ module.exports = function(app) {
       });
   });
 
-  app.put("/api/data/light/:mac_address/:light", function(req, res) {
+  app.put("/api/data/light/:light", function(req, res) {
     lightVal = req.params.light;
 
     if (lightVal === "0") {
@@ -59,18 +59,21 @@ module.exports = function(app) {
       lightVal = 0;
     }
 
+    //console.log(req.user.id);
+
     db.rpi.update(
       {
         light: lightVal
       },
       {
         where: {
-          mac_address: req.params.mac_address
+          UserId: req.user.id
         }
       }
     ).then(function() {
       //res.json(updatePi);
       res.send(200);
+      
     });
   });
 
