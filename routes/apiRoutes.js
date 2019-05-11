@@ -35,6 +35,19 @@ module.exports = function(app) {
       });
   });
 
+  app.get("/api/data/user/:userid", function(req, res) {
+    db.rpi
+      .findAll({
+        where: {
+          // eslint-disable-next-line camelcase
+          UserId: req.params.userid
+        }
+      })
+      .then(function(dbrpi) {
+        res.json(dbrpi);
+      });
+  });
+
   app.put("/api/data/light/:mac_address/:light", function(req, res) {
     lightVal = req.params.light;
 

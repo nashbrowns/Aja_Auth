@@ -29,8 +29,26 @@ module.exports = function(app, passport) {
   });
 
   app.get('/dashboard', isLoggedIn, function(req, res){
-    res.render('dashboard', {username: req.user.email});
-    console.log(req.user.email);
+
+    let user_data = req;
+
+    db.rpi
+      .findAll({
+        where: {
+          UserId: req.user.id
+        }
+      }).then(function(dbrpi) {
+
+        console.log(dbrpi[0].temp);
+         let lightData = dbrpi[0].light;
+         let tempData = dbrpi[0].temp;
+         let macData = dbrpi[0].mac_address;
+        res.render('dashboard', {username: user_data.user.email, light: lightData, temp:tempData, mac:macData });
+      })
+
+    //res.render('dashboard', {username: req.user.email, user_data: req});
+    
+    //console.log(req);
   });
 
   app.get('/logout', function(req, res) {
