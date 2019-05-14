@@ -46,9 +46,6 @@ module.exports = function(app, passport) {
         }
       });
 
-    //res.render('dashboard', {username: req.user.email, user_data: req});
-    
-    //console.log(req);
   });
 
   app.get('/logout', function(req, res) {

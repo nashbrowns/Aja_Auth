@@ -94,4 +94,17 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/api/data/getData/getPi', function(req, res){
+
+    //console.log(req.user.id);
+
+    db.rpi.findAll({
+        where: {
+            UserId: req.user.id
+        }
+    }).then(function(dbrpi){
+        res.json(dbrpi);
+    })
+});
+
 };
