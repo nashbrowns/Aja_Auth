@@ -110,8 +110,24 @@
 
         $(document).ready(function () {
 
-            $(".pi").on('click', function () {
-                console.log('hello');
+            $("#piDiv").on('click',"btn", function () {
+                console.log(this.id);
+                console.log($(this).attr('light'));
+
+                let newLight = $(this).attr('light');
+
+                if(newLight === 'true'){
+                    console.log('light is on');
+                }
+            
+
+                $.ajax({
+                    method: "PUT",
+                    url: "/api/data/Onelight/"+newLight+"/"+this.id
+                }).then(function (response){
+                    console.log(response);
+                    location.reload();
+                });
             });
 
             $.ajax({
@@ -144,7 +160,7 @@
 
                 let rpiTemp = $('<h5>').text('Temperature: ' + piData[i].temp + '\xB0' + 'F');
 
-                let rpiButton = $('<btn>').addClass('btn btn-info pi').attr('id', piData[i].id).html('<i class="far fa-lightbulb"></i>');
+                let rpiButton = $('<btn>').addClass('btn btn-info pi').attr('id', piData[i].id).attr('light', piData[i].light).html('<i class="far fa-lightbulb"></i>');
 
                 rpiId.appendTo(rpi);
                 rpiLight.appendTo(rpi);
