@@ -77,6 +77,33 @@ module.exports = function(app) {
     });
   });
 
+  app.put("/api/data/Onelight/:light/:id", function(req, res){
+
+    lightVal = req.params.light;
+
+    if (lightVal === "0") {
+      lightVal = 0;
+    } else if (lightVal === "1") {
+      lightVal = 1;
+    } else {
+      lightVal = 0;
+    }
+
+    db.rpi.update(
+      {
+        light: lightVal
+      },
+      {
+        where: {
+          UserId: req.user.id,
+          id: req.params.id
+        }
+      }
+    )
+
+
+  });
+
   app.put("/api/data/temp/:mac_address/:temp", function(req, res){
    
     tempVal = parseInt(req.params.temp);
@@ -96,7 +123,6 @@ module.exports = function(app) {
 
   app.get('/api/data/getData/getPi', function(req, res){
 
-    //console.log(req.user.id);
 
     db.rpi.findAll({
         where: {
