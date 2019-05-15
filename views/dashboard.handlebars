@@ -13,162 +13,216 @@
 
         </div>
 
-
-        <div class="row m-4">
-
-            <div class="col-sm text-center">
-
-                <h4>Add a device:</h4>
-
-                <form id="addPi" name="signup" method="post" action="/api/data/addPi">
-
-                    <input name="mac_address" type="text" placeholder="Device ID" />
-
-                    <input class="btn button" class="m-3" type="submit" value="Add" />
-
-                </form>
-
-            </div>
-
-        </div>
+    </div>
 
 
-        <br><Br>
+    <div class="row m-4">
 
+        <div class="col-sm text-center">
 
-        <div class="row">
+            <h4>Add a device:</h4>
 
-            <div class="col-sm text-center">
+            <form id="addPi" name="signup" method="post" action="/api/data/addPi">
 
-                <img class="logo img-fluid" src="/assets/images/journal-entry@2x.png" alt="Aja App logo image">
+                <input name="mac_address" type="text" placeholder="Device ID" />
 
-                <h5>Showing data for device ID {{mac}}</h5>
+                <input class="btn button" class="m-3" type="submit" value="Add" />
 
-                <h2><i class="far fa-lightbulb"></i> The light is on: {{light}}</h2>
-                <div class="col-sm">
-                    {{#if light}}
-                    <btn class="btn btn-info" id="lightOff">Turn Off</btn>
-                    {{/if}}
-
-                    {{#unless light}}
-                    <btn class="btn btn-info" id="lightOn">Turn On</btn>
-                    {{/unless}}
-
-                    <btn class="btn btn-info" id="getData">Get Data</btn>
-                </div>
-
-                <br>
-
-                <h2><i class="fas fa-thermometer-half"></i> The temperature is: {{temp}}</h2>
-
-            </div>
-
-            <div class="col-sm text-center">
-                <div id="piDiv" class="text-left">
-                    {{!-- rPi data appended here --}}
-                </div>
-            </div>
+            </form>
 
         </div>
 
     </div>
 
-    <script>
 
-        let piData = [];
+    <br><Br>
 
-        $("#lightOn").on('click', function () {
+
+    <div class="row">
+
+        <div class="col-sm text-center">
+
+            <img class="logo img-fluid" src="/assets/images/journal-entry@2x.png" alt="Aja App logo image">
+
+            <h5>Showing data for device ID {{mac}}</h5>
+
+            <h2><i class="far fa-lightbulb"></i> The light is on: {{light}}</h2>
+
+            {{#if light}}
+            <btn class="btn btn-info" id="lightOff">Turn Off</btn>
+            {{/if}}
+
+            {{#unless light}}
+            <btn class="btn btn-info" id="lightOn">Turn On</btn>
+            {{/unless}}
+
+            <btn class="btn btn-info" id="getData">Get Data</btn>
+
+
+            <br>
+
+            <h2><i class="fas fa-thermometer-half"></i> The temperature is: {{temp}}</h2>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm text-center">
+
+            <div id="piDiv1" class="piDiv text-left">
+                {{!-- rPi data appended here --}}
+            </div>
+
+        </div>
+
+        <div class="col-sm text-center">
+
+            <div id="piDiv2" class="piDiv text-left">
+                {{!-- rPi data appended here --}}
+            </div>
+
+        </div>
+
+        <div class="col-sm text-center">
+
+            <div id="piDiv3" class="piDiv text-left">
+                {{!-- rPi data appended here --}}
+            </div>
+
+        </div>
+</div>
+
+
+
+
+<script>
+
+    let piData = [];
+
+    $("#lightOn").on('click', function () {
+
+        $.ajax({
+            method: "PUT",
+            url: "/api/data/light/1"
+        }).then(function () {
+            location.reload();
+        });
+    });
+
+
+    $("#lightOff").on('click', function () {
+
+        $.ajax({
+            method: "PUT",
+            url: "/api/data/light/0"
+        }).then(function () {
+            location.reload();
+        });
+    });
+
+    $("#getData").on('click', function () {
+
+        $.ajax({
+            method: "GET",
+            url: "/api/data/getData/getPi"
+        }).then(function (response) {
+            console.log(response);
+        });
+    });
+
+    $(document).ready(function () {
+
+
+        $(".piDiv").on('click', "btn", function () {
+            console.log(this.id);
+            console.log($(this).attr('light'));
+
+            let newLight = $(this).attr('light');
+
+            if (newLight === 'true') {
+                console.log('light is on');
+            }
+
 
             $.ajax({
                 method: "PUT",
-                url: "/api/data/light/1"
-            }).then(function () {
-                location.reload();
-            });
-        });
-
-
-        $("#lightOff").on('click', function () {
-
-            $.ajax({
-                method: "PUT",
-                url: "/api/data/light/0"
-            }).then(function () {
-                location.reload();
-            });
-        });
-
-        $("#getData").on('click', function () {
-
-            $.ajax({
-                method: "GET",
-                url: "/api/data/getData/getPi"
+                url: "/api/data/Onelight/" + newLight + "/" + this.id
             }).then(function (response) {
                 console.log(response);
+                location.reload();
             });
         });
 
-        $(document).ready(function () {
+        $.ajax({
+            method: "GET",
+            url: "/api/data/getData/getPi"
+        }).then(function (response) {
+            console.log(response);
+            for (let i = 0; i < response.length; i++) {
+                console.log(response[i]);
+                piData.push(response[i]);
+            }
+            console.log(piData);
+            displayData(piData);
+        });
+    });
 
-            $("#piDiv").on('click',"btn", function () {
-                console.log(this.id);
-                console.log($(this).attr('light'));
+    let displayData = function (piData) {
 
-                let newLight = $(this).attr('light');
+        let colCount = 1; //for putting piCards in columns
 
-                if(newLight === 'true'){
-                    console.log('light is on');
-                }
+        for (let i = 0; i < piData.length; i++) {
+
+            //creating card divs
+            let card = $('<div>').addClass('card  mt-2 mb-2').attr('style', 'width: 18rem;');
+            let rpi = $('<div>').attr('id', piData[i].id).addClass('card-body piContainer');
+
+            //creating rows and columns for inside card
+            let row = $('<div>').addClass('row');
+            let col1 = $('<div>').addClass('col-9');
+            let col2 = $('<div>').addClass('col-3');
+
+            //creating rpi data display elements
+            let rpiId = $('<h5>').text('ID: ' + piData[i].id);
+            let rpiLight = $('<h5>');
+            if (piData[i].light) {
+                rpiLight.text('Light: On');
+            }
+            else {
+                rpiLight.text('Light: Off');
+            }
+            let rpiTemp = $('<h5>').text('Temperature: ' + piData[i].temp + '\xB0' + 'F');
+            let rpiButton = $('<btn>').addClass('btn btn-info pi').attr('id', piData[i].id).attr('onclick', 'return').attr('light', piData[i].light).html('<i class="far fa-lightbulb"></i>');
+
+            rpiId.appendTo(col1);
+            rpiLight.appendTo(col1);
+            rpiTemp.appendTo(col1);
+            rpiButton.appendTo(col2);
+
+            col1.appendTo(row);
+            col2.appendTo(row);
+
+            row.appendTo(rpi);
+
+            rpi.appendTo(card);
+
+            
+            if(colCount === 1){
+                $('#piDiv1').append(card);
+                colCount = 2;
+            } else if( colCount === 2){
+                $('#piDiv2').append(card);
+                colCount = 3;
+            } else if( colCount === 3){
+                $('#piDiv3').append(card);
+                colCount = 1;
+            }
             
 
-                $.ajax({
-                    method: "PUT",
-                    url: "/api/data/Onelight/"+newLight+"/"+this.id
-                }).then(function (response){
-                    console.log(response);
-                    location.reload();
-                });
-            });
-
-            $.ajax({
-                method: "GET",
-                url: "/api/data/getData/getPi"
-            }).then(function (response) {
-                console.log(response);
-                for (let i = 0; i < response.length; i++) {
-                    console.log(response[i]);
-                    piData.push(response[i]);
-                }
-                console.log(piData);
-                displayData(piData);
-            });
-        });
-
-        let displayData = function (piData) {
-
-            for (let i = 0; i < piData.length; i++) {
-                let rpi = $('<div>').attr('id', piData[i].id);
-                let rpiId = $('<h5>').text('ID: ' + piData[i].id);
-                let rpiLight = $('<h5>');
-
-                if (piData[i].light) {
-                    rpiLight.text('Light: On');
-                }
-                else {
-                    rpiLight.text('Light: Off');
-                }
-
-                let rpiTemp = $('<h5>').text('Temperature: ' + piData[i].temp + '\xB0' + 'F');
-
-                let rpiButton = $('<btn>').addClass('btn btn-info pi').attr('id', piData[i].id).attr('light', piData[i].light).html('<i class="far fa-lightbulb"></i>');
-
-                rpiId.appendTo(rpi);
-                rpiLight.appendTo(rpi);
-                rpiTemp.appendTo(rpi);
-                rpiButton.appendTo(rpi);
-                $('#piDiv').append(rpi);
-            }
         }
+    }
 
 
-    </script>
+</script>

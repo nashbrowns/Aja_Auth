@@ -40,6 +40,11 @@ body {
   letter-spacing: 0.01em;
 }
 
+.piContainer {
+  background-color: rgba(126, 255, 255, 0.5);
+  padding: 20px;
+}
+
 h5 {
   color: #2da6a0;
   text-transform: uppercase;
