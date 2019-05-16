@@ -22,6 +22,17 @@ module.exports = function (app) {
     });
   });
 
+  app.delete("/api/data/delete/:id", function(req, res) {
+    db.rpi.destroy({
+      where: {
+        id: req.params.id,
+        UserId: req.user.id
+      }
+    }).then(function(dbrpi){
+        res.send(200);
+    });
+  });
+
   app.get("/api/data/:mac_address", function (req, res) {
     db.rpi
       .findOne({
