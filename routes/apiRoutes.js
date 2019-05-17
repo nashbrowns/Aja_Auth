@@ -1,28 +1,39 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+  app.get("/api/examples", function (req, res) {
+    db.Example.findAll({}).then(function (dbExamples) {
       res.json(dbExamples);
     });
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
+  app.post("/api/examples", function (req, res) {
+    db.Example.create(req.body).then(function (dbExample) {
       res.json(dbExample);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+  app.delete("/api/examples/:id", function (req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
       res.json(dbExample);
     });
   });
 
-  app.get("/api/data/:mac_address", function(req, res) {
+  app.delete("/api/data/delete/:id", function(req, res) {
+    db.rpi.destroy({
+      where: {
+        id: req.params.id,
+        UserId: req.user.id
+      }
+    }).then(function(dbrpi){
+        res.send(200);
+    });
+  });
+
+  app.get("/api/data/:mac_address", function (req, res) {
     db.rpi
       .findOne({
         where: {
@@ -30,12 +41,12 @@ module.exports = function(app) {
           mac_address: req.params.mac_address
         }
       })
-      .then(function(dbrpi) {
+      .then(function (dbrpi) {
         res.json(dbrpi);
       });
   });
 
-  app.get("/api/data/user/:userid", function(req, res) {
+  app.get("/api/data/user/:userid", function (req, res) {
     db.rpi
       .findAll({
         where: {
@@ -43,12 +54,12 @@ module.exports = function(app) {
           UserId: req.params.userid
         }
       })
-      .then(function(dbrpi) {
+      .then(function (dbrpi) {
         res.json(dbrpi);
       });
   });
 
-  app.put("/api/data/light/:light", function(req, res) {
+  app.put("/api/data/light/:light", function (req, res) {
     lightVal = req.params.light;
 
     if (lightVal === "0") {
@@ -70,28 +81,70 @@ module.exports = function(app) {
           UserId: req.user.id
         }
       }
-    ).then(function() {
+    ).then(function () {
       //res.json(updatePi);
       res.send(200);
-      
+
     });
   });
 
-  app.put("/api/data/temp/:mac_address/:temp", function(req, res){
-   
+  app.put("/api/data/Onelight/:light/:id", function (req, res) {
+
+    lightVal = req.params.light;
+
+    console.log(lightVal);
+
+    if (lightVal === "true") {
+      lightVal = 0;
+    } else if (lightVal === "false") {
+      lightVal = 1;
+    } else {
+      lightVal = 0;
+    }
+
+    db.rpi.update(
+      {
+        light: lightVal
+      },
+      {
+        where: {
+          UserId: req.user.id,
+          id: req.params.id
+        }
+      }
+    ).then(function(dbrpi){
+      console.log("light changed");
+      res.json(dbrpi);
+    });
+  });
+
+  app.put("/api/data/temp/:mac_address/:temp", function (req, res) {
+
     tempVal = parseInt(req.params.temp);
 
     console.log(tempVal);
 
     db.rpi.update({
       temp: tempVal
-    },{
+    }, {
+        where: {
+          mac_address: req.params.mac_address
+        }
+      }).then(function () {
+        res.send(200);
+      });
+  });
+
+  app.get('/api/data/getData/getPi', function (req, res) {
+
+
+    db.rpi.findAll({
       where: {
-        mac_address: req.params.mac_address
+        UserId: req.user.id
       }
-    }).then(function(){
-      res.send(200);
-    });
+    }).then(function (dbrpi) {
+      res.json(dbrpi);
+    })
   });
 
 };
