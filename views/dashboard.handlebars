@@ -149,13 +149,15 @@
 
         $(document).ready(function () {
 
-            $(".piDiv").on('click', 'btn.piDel', function () {
+            $(".piDiv").on('click', 'btn.piDel', function (e) {
                 $.ajax({
                     method: "DELETE",
                     url: "/api/data/delete/" + $(this).attr('Del')
                 }).then(function (response) {
-
-                    location.reload();
+                    console.log(this);
+                    $(this).empty();
+                    getData();
+                    //location.reload();
                 });
             });
 
